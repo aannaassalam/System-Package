@@ -1,0 +1,152 @@
+.login {
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.left {
+  height: 100svh;
+  width: 55%;
+  padding: 40px 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.left .logo {
+  align-self: flex-start;
+  margin-bottom: auto;
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.left > p {
+  margin-top: auto;
+  align-self: flex-start;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.left > p span {
+  color: var(--blue);
+  cursor: pointer;
+}
+
+.right {
+  height: 100%;
+  width: 45%;
+}
+
+.right .slider-stack {
+  position: relative;
+  width: 520px;
+  height: 670px;
+}
+
+.right .slider-stack .main-stack {
+  position: absolute;
+  z-index: 3;
+}
+
+.right .slider-stack .stack {
+  width: 300px;
+  height: 550px;
+  position: absolute;
+  bottom: 80px;
+  right: -15px;
+  border-radius: 20px;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    right 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.right .slider-stack .stack:nth-child(2) {
+  background-color: #0646c6;
+  z-index: 2;
+  transform: rotate(5deg);
+}
+
+.right .slider-stack .stack:nth-child(3) {
+  background-color: #053594;
+  z-index: 1;
+  transform: rotate(10deg);
+  bottom: 40px;
+  right: -30px;
+}
+
+.right .slider-stack:hover .stack {
+  transform: rotate(0deg);
+  right: 50px;
+  visibility: hidden;
+  transition: transform 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    right 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275), visibility 0.1s 0.7s;
+}
+
+@media (width<=1190px) {
+  .left,
+  .right {
+    width: 50%;
+  }
+
+  .right .slider-stack {
+    position: relative;
+    width: 460px;
+    height: 558px;
+  }
+
+  .right .slider-stack .stack {
+    height: 400px !important;
+    right: 12px;
+    bottom: 120px;
+  }
+
+  .right .slider-stack .stack:nth-child(3) {
+    bottom: 80px;
+    right: 2px;
+  }
+
+  .right .slider-stack:hover .stack:nth-child(3) {
+    right: 30px;
+  }
+}
+
+@media (width<=960px) {
+  .left {
+    width: 100%;
+    padding: 40px 50px;
+    position: relative;
+  }
+
+  .left .logo {
+    margin-bottom: 0;
+  }
+
+  .left > p {
+    position: absolute;
+    top: 45px;
+    right: 50px;
+    margin-top: 0;
+  }
+
+  .right {
+    display: none;
+  }
+}
+
+@media (width<=680px) {
+  .left {
+    padding: 20px 30px;
+  }
+
+  .left > p {
+    top: 28px;
+    right: 30px;
+  }
+}
+
+@media (width<=380px) {
+  .left {
+    padding: 15px;
+  }
+}

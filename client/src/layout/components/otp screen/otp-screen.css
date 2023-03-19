@@ -1,0 +1,78 @@
+.otp-screen h1 {
+  margin-bottom: 15px;
+}
+
+.otp-screen > p {
+  margin-bottom: 40px;
+  width: 320px;
+  color: #7a7a85;
+}
+
+.otp-screen .otp-inputs {
+  display: flex;
+  align-items: center;
+}
+
+.otp-screen .otp-inputs input {
+  width: 48px;
+  height: 56px;
+  border: 1px solid var(--blue);
+  padding: 17px;
+  font-size: 18px;
+  margin: 0 5px;
+  border-radius: 8px;
+  text-align: center;
+  outline: none;
+  -webkit-appearance: none;
+}
+
+.otp-screen .otp-inputs input.error-input {
+  border-color: var(--error);
+}
+
+.otp-screen .otp-inputs input:focus {
+  /* border-color: var(--blue); */
+  box-shadow: 0 0 1px 4px #0055ff33;
+  -webkit-box-shadow: 0 0 1px 4px #0055ff33;
+  border-radius: 8px;
+}
+
+.otp-screen .actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 40px;
+  font-weight: 700;
+}
+
+.otp-screen .actions p:first-child {
+  color: var(--blue);
+  cursor: pointer;
+}
+
+.otp-screen .actions p:last-child {
+  color: #cacace;
+  cursor: pointer;
+}
+
+.text-blue {
+  color: var(--blue) !important;
+}
+
+.otp-screen p.error {
+  text-align: center;
+  color: var(--error);
+}
+
+@media (680px<=width<=920px) {
+  .otp-screen {
+    margin: auto;
+    transform: translateY(-30%);
+  }
+}
+
+@media (width<=680px) {
+  .otp-screen {
+    margin-top: 50px;
+  }
+}

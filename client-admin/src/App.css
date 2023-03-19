@@ -1,0 +1,113 @@
+.App {
+  background-color: #0e0e4a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100svh;
+}
+
+.App .container {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px 30px;
+  width: 300px;
+}
+
+.App .container h2 {
+  margin-bottom: 10px;
+  align-self: flex-start;
+}
+
+.App .container .image {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.App .container .image > div {
+  position: relative;
+}
+
+.App .container .image > div span {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ff6961;
+  color: #fff;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  cursor: pointer;
+}
+
+.App .container .image img {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+}
+
+.App .container .select-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 200px;
+  border: 4px dashed #7a7a85;
+  color: #7a7a85;
+  font-size: 40px;
+}
+
+.App .container .image input[type="file"] {
+  display: none;
+}
+
+.App .container .input {
+  width: 100%;
+}
+
+.App .container .input input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #cacace;
+  border-radius: 5px;
+  /* outline: none; */
+}
+
+.App .container .input input:focus {
+  outline-color: #0858f7;
+}
+
+.App .container button {
+  all: unset;
+  width: 100%;
+  padding: 10px 0;
+  background-color: #0858f7;
+  color: #fff;
+  font-weight: 500;
+  text-align: center;
+  border-radius: 10px;
+  margin-top: 20px;
+  cursor: pointer;
+  position: relative;
+}
+
+.App .container button::after {
+  content: "";
+  background-color: transparent;
+  transition: background-color 0.2s;
+}
+
+.App .container button:hover::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: background-color 0.2s;
+}

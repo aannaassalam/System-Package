@@ -1,0 +1,18 @@
+.success {
+  height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.success img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.success h3 {
+  color: var(--blue);
+  margin-top: 20px;
+}
