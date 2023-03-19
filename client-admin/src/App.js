@@ -13,14 +13,17 @@ function App() {
   const inputRef = useRef();
 
   const getBase64 = (file, cb) => {
-    let reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = function () {
-      cb(reader.result);
-    };
-    reader.onerror = function (error) {
-      console.log("Error: ", error);
-    };
+    if (logo.length) cb(logo);
+    else {
+      let reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = function () {
+        cb(reader.result);
+      };
+      reader.onerror = function (error) {
+        console.log("Error: ", error);
+      };
+    }
   };
 
   const submit = () => {
@@ -41,7 +44,7 @@ function App() {
         })
         .then((res) => alert(res.data.msg))
         .catch((err) => console.log(err))
-        .finally(() => setSettings(false));
+        .finally(() => setSubmitting(false));
     });
   };
 
