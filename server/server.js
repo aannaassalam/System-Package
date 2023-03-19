@@ -62,7 +62,9 @@ app.get("/api/settings", (req, res) => {
 });
 
 mongooose
-  .connect(process.env.MONGO_URL)
+  .connect(
+    `mongodb+srv://admin:${process.env.MONGO_PASSWORD}@my-project.96wsl.mongodb.net/?retryWrites=true&w=majority`
+  )
   .then(() =>
     app.listen(PORT, () => console.log(`Server running at port: ${PORT}`))
   )

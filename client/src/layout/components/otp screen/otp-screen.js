@@ -19,6 +19,8 @@ export default function OtpScreen({ email, prevStep }) {
 
   const navigate = useNavigate();
 
+  const baseUrl = "https://system-package-6vcc.onrender.com/api";
+
   useEffect(() => {
     countdown > 0 &&
       setTimeout(() => {
@@ -46,7 +48,7 @@ export default function OtpScreen({ email, prevStep }) {
 
   const otp_verify = (joined_otp) => {
     axios
-      .post("http://localhost:5000/api/verifyLogin", { otp: joined_otp })
+      .post(`${baseUrl}/verifyLogin`, { otp: joined_otp })
       .then((res) => {
         if (res.data.status === 200)
           navigate("/success", { state: { loggedIn: true } });
@@ -56,7 +58,7 @@ export default function OtpScreen({ email, prevStep }) {
   };
 
   const resend_otp = () => {
-    axios.get("http://localhost:5000/api/login").then((res) => {
+    axios.get(`${baseUrl}/login`).then((res) => {
       const { otp } = res.data;
       if (Notification.permission === "granted") {
         navigator.serviceWorker.getRegistration().then((reg) => {

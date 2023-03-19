@@ -6,6 +6,9 @@ function App() {
   const [settings, setSettings] = useState({});
   const [heading, setHeading] = useState("");
   const [logo, setLogo] = useState();
+  const [submitting, setSubmitting] = useState(false);
+
+  const baseUrl = "https://system-package-6vcc.onrender.com/api";
 
   const inputRef = useRef();
 
@@ -21,6 +24,7 @@ function App() {
   };
 
   const submit = () => {
+    setSubmitting(true);
     if (heading.length === 0) {
       alert("Heading cannot be empty!");
       return;
@@ -31,18 +35,19 @@ function App() {
     }
     getBase64(logo, (image_string) => {
       axios
-        .post("http://localhost:5000/api/settings", {
+        .post(`${baseUrl}/settings`, {
           logo: image_string,
           heading,
         })
         .then((res) => alert(res.data.msg))
-        .catch((err) => console.log(err));
+        .catch((err) => console.log(err))
+        .finally(() => setSettings(false));
     });
   };
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/settings")
+      .get(`${baseUrl}/settings`)
       .then((res) => {
         setSettings(res.data);
         setHeading(res.data.heading);
@@ -91,7 +96,9 @@ function App() {
             onChange={(e) => setHeading(e.target.value)}
           />
         </div>
-        <button onClick={submit}>Submit</button>
+        <button onClick={submit} disabled={submitting}>
+          Submit
+        </button>
       </div>
     </div>
   );

@@ -14,6 +14,8 @@ export default function WelcomeScreen({ nextStep, heading }) {
     msg: "",
   });
 
+  const baseUrl = "https://system-package-6vcc.onrender.com/api";
+
   useEffect(() => {
     setErrMsg({
       input: "",
@@ -37,7 +39,7 @@ export default function WelcomeScreen({ nextStep, heading }) {
       return;
     }
 
-    axios.get("http://localhost:5000/api/login").then((res) => {
+    axios.get(`${baseUrl}/login`).then((res) => {
       const { otp } = res.data;
       if (Notification.permission === "granted") {
         navigator.serviceWorker.getRegistration().then((reg) => {
