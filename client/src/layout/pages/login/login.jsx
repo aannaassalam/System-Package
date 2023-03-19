@@ -13,6 +13,8 @@ export default function Login() {
   const [settings, setSettings] = useState({});
   const [step, setStep] = useState(1);
 
+  const baseUrl = "https://system-package-6vcc.onrender.com/api";
+
   const handleResize = useCallback(() => {
     if (window.screen.width <= 1190) {
       setSlider_width(400);
@@ -25,7 +27,7 @@ export default function Login() {
 
   const fetch_settings = useCallback(() => {
     axios
-      .get("http://localhost:5000/api/settings")
+      .get(`${baseUrl}/settings`)
       .then((res) => {
         console.log(res.data);
         setSettings(res.data);
@@ -68,11 +70,7 @@ export default function Login() {
   return (
     <div className="login">
       <div className="left">
-        <img
-          src={`data:${settings.image_type};base64,${settings.logo}`}
-          alt="logo"
-          className="logo"
-        />
+        <img src={settings.logo} alt="logo" className="logo" />
         {renderScreen()}
         <p>
           Not a member? <span>Create account</span>
