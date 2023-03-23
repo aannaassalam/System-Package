@@ -14,7 +14,7 @@ export default function WelcomeScreen({ nextStep, heading }) {
     msg: "",
   });
 
-  const baseUrl = "https://system-package-6vcc.onrender.com/api";
+  const baseUrl = "https://system-package-server.vercel.app/api";
 
   useEffect(() => {
     setErrMsg({

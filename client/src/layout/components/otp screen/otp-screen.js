@@ -19,7 +19,7 @@ export default function OtpScreen({ email, prevStep }) {
 
   const navigate = useNavigate();
 
-  const baseUrl = "https://system-package-6vcc.onrender.com/api";
+  const baseUrl = "https://system-package-server.vercel.app/api";
 
   useEffect(() => {
     countdown > 0 &&

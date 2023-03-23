@@ -13,7 +13,7 @@ export default function Login() {
   const [settings, setSettings] = useState({});
   const [step, setStep] = useState(1);
 
-  const baseUrl = "https://system-package-6vcc.onrender.com/api";
+  const baseUrl = "https://system-package-server.vercel.app/api";
 
   const handleResize = useCallback(() => {
     if (window.screen.width <= 1190) {
@@ -65,7 +65,8 @@ export default function Login() {
     }
   };
 
-  if (!settings.logo) return "loading...";
+  if (!settings.logo)
+    return "          Please wait a while, seems like the server is in sleep mode. You will be able to access this site once the sever wakes...";
 
   return (
     <div className="login">

@@ -3,12 +3,12 @@ import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 
 function App() {
-  const [settings, setSettings] = useState({});
+  const [settings, setSettings] = useState();
   const [heading, setHeading] = useState("");
   const [logo, setLogo] = useState();
   const [submitting, setSubmitting] = useState(false);
 
-  const baseUrl = "https://system-package-6vcc.onrender.com/api";
+  const baseUrl = "https://system-package-server.vercel.app/api";
 
   const inputRef = useRef();
 
@@ -59,7 +59,8 @@ function App() {
       .catch((err) => console.log(err));
   }, []);
 
-  if (!settings) return "Loading...";
+  if (!settings)
+    return "          Please wait a while, seems like the server is in sleep mode. You will be able to access this site once the sever wakes...";
 
   return (
     <div className="App">
@@ -100,7 +101,7 @@ function App() {
           />
         </div>
         <button onClick={submit} disabled={submitting}>
-          Submit
+          {submitting ? "Submitting, Please wait..." : "Submit"}
         </button>
       </div>
     </div>

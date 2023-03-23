@@ -1,21 +1,11 @@
 const express = require("express");
-const mongooose = require("mongoose");
-const cors = require("cors");
+const router = express.Router();
 const otpGenerator = require("otp-generator");
-const settings = require("./Models/settings");
-require("dotenv").config();
-
-const app = express();
-
-const PORT = process.env.PORT || 5000;
-
-app.use(cors());
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+const settings = require("../Models/settings");
 
 var otp = "";
 
-app.get("/api/login", (req, res) => {
+router.get("/login", (req, res) => {
   otp = otpGenerator.generate(6, {
     lowerCaseAlphabets: false,
     specialChars: false,
@@ -24,12 +14,12 @@ app.get("/api/login", (req, res) => {
   res.json({ otp });
 });
 
-app.post("/api/verifyLogin", (req, res) => {
+router.post("/verifyLogin", (req, res) => {
   if (req.body.otp === otp) res.json({ status: 200, msg: "Successfull" });
   else res.json({ status: 401, msg: "Incorrect OTP" });
 });
 
-app.post("/api/settings", (req, res) => {
+router.post("/settings", (req, res) => {
   const { logo, heading } = req.body;
 
   if (!heading.length)
@@ -49,7 +39,7 @@ app.post("/api/settings", (req, res) => {
     });
 });
 
-app.get("/api/settings", (req, res) => {
+router.get("/settings", (req, res) => {
   settings
     .findOne()
     .then((data) => {
@@ -61,11 +51,4 @@ app.get("/api/settings", (req, res) => {
     });
 });
 
-mongooose
-  .connect(
-    `mongodb+srv://admin:${process.env.MONGO_PASSWORD}@my-project.96wsl.mongodb.net/?retryWrites=true&w=majority`
-  )
-  .then(() =>
-    app.listen(PORT, () => console.log(`Server running at port: ${PORT}`))
-  )
-  .catch((err) => console.log(err));
+module.exports = router;
